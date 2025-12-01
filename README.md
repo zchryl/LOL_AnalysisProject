@@ -10,6 +10,7 @@ By Zachary Loo (zloo@ucsd.edu)
 
 ## Data CLeaning and Exploratory Data Analysis
 This is an example of a cleaned dataframe that will be further filtered in the following sections
+<br>
 | gameid           | league   | side   | position   |   kills |   deaths |   assists |   teamkills |   firstblood |   firstbloodkill |     dpm |   damagetotowers |   totalgold |   minionkills |   monsterkills |   damagetochampions |
 |:-----------------|:---------|:-------|:-----------|--------:|---------:|----------:|------------:|-------------:|-----------------:|--------:|-----------------:|------------:|--------------:|---------------:|--------------------:|
 | LOLTMNT03_179647 | LFL2     | Blue   | top        |       1 |        2 |         1 |           3 |            0 |                0 | 759.648 |             7451 |       10668 |           234 |              0 |               20156 |
