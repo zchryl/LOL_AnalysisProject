@@ -1,4 +1,4 @@
-# Analyzing the Definition League of Legends Positions
+# Analyzing What Defines each League of Legends Position
 
 By Zachary Loo (zloo@ucsd.edu)
 
