@@ -4,8 +4,6 @@ By Zachary Loo (zloo@ucsd.edu)
 ---
 ## Abstract
 Analyzing What Defines each League of Legends Position is a data science project conducted at UCSD. It walks through many important stages of a Dataset Analysis, starting with Cleaning and Exploratory Data Analysis, Missingness Assessments, Hypothesis Testing, and constructing a Prediction Model based on the available statistics. This project focuses on the presence of distinguished roles and just how much their statistics define them in the playing field. 
-
-Author: Zachary Loo
 ---
 
 ## Introduction
