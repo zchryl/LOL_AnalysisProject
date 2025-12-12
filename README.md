@@ -4,7 +4,8 @@ By Zachary Loo (zloo@ucsd.edu)
 ---
 ## Abstract
 Position Analysis In League of Legends is a data science analysis project conducted at UCSD. It walks through many important stages of a Dataset Analysis, starting with Cleaning and Exploratory Data Analysis, Missingness Assessments, Hypothesis Testing, and constructing a Prediction Model based on the available statistics. This project focuses on the presence of distinguished roles and just how much their statistics define them in the playing field. 
----
+
+--- 
 
 ## Introduction
 League of Legends, abbreviated as LOL, is an online multiplayer teamwork player versus player (PVP) game that falls under the category of MOBA (Multiplayer Online Battle Arena). League is developed by Riot Games and originally released in 2009. As of 2025, the game still has an active playerbase numbering in the tens of millions. As of 2025, the lowest concurrent playercount its had is 10 Million. Since its release, it has garnered one, if not the largest, presence in the Esport field of entertainment - multiplayer competitive games with professional players. 
@@ -74,8 +75,7 @@ This dataset captures essentially every numerical and some categorical metrics o
 * `firstbloodkill`: this column is a more specific indicator of if a player explicitly got the final hit on the first kill in a match 
 
 ---
-<br>
-<br>
+
 
 ## Data Cleaning and Exploratory Data Analysis
 Moving forward, I kept only a subset of the original Dataset by creating a dataframe with only the columns above. An additional step to clean this dataset for the focus of this analysis was to remove the rows in which the `position` column was equal to team. Because my analysis focused on the relationship of individual players statistics to their position in each match, having a row that summarizes team specific qualities is unnecessary for this project. The removal of these rows was done with a mask, keeping only rows of the original dataset where `position` was not equal to `team`
@@ -374,8 +374,7 @@ For this baseline model, I applied a `StandardScaler` on the `kills`, `assists`,
 After fitting this pipeline to the training data, it returns an accuracy score of **68.474%** on the training data and **68.456%** on the test data. This small dip in accuracy is always expected because the model does not train on the test data. To further analyze this baseline model, I examined the F1-Score of each individual class because of this problem’s multiclass nature. When comparing the predictions of the test data with the actual test classes. When checking the F1-Scores of the baseline model, in the order of `bot`, `jng`, `mid`, `sup`, `top`, the scores are `0.52, 1.0, 0.43, 1.0, 0.47`.
 <br>
 <br>
-From these initial scores, it is possible to say the model is “passable.” It accurately predicts greater than 50% of the time, but the F1-scores tell us the model struggles most differentiating the `bot`, `mid`, and `top` positions. Meanwhile, it has maximum F1-score for `jng` and `sup`. What stands out the most from this current model is that the training accuracy is **68.474%**, when Decision Trees often overfit. In tandem with a low test accuracy, I am led to believe that this baseline model is actually **underfitting** the data. Therefore, there is some room for improvement
-
+From these initial scores, it is possible to say the model is “passable.” It accurately predicts greater than 50% of the time, but the F1-scores tell us the model struggles most differentiating the `bot`, `mid`, and `top` positions. Meanwhile, it has maximum F1-score for `jng` and `sup`. What stands out the most from this current model is that the training accuracy is **68.474%**, when Decision Trees often overfit. In tandem with a low test accuracy, I am led to believe that this baseline model is actually **underfitting** the data. Therefore, there is some room for improvement.
 ---
 
 ## Final Model
