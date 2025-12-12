@@ -107,25 +107,27 @@ Univariate Analysis
 <br>
 I performed univariate analysis first on individual player’s ‘kills’ in each match by plotting a histogram.
 <br>
-
+<div style = text-align:center;">
 <iframe
  src = "assets/univariate_kills.html"
  width = "800"
  height = "450"
  frameborder = "0"
 ></iframe>
+</div>
 The graph is unimodal but exhibits a heavy right skew, a possible indication that kills are not evenly spread out across players. With a high frequency for low amounts of kills may indicate that there is likely an underlying reason why kills tend to be low, but not much more can be said with this observation alone.
 <br>
 <br>
 Next, I performed a similar univariate analysis on Player’s DPM across all games by plotting the observed values on a histogram. 
 <br>
-
+<div style = text-align:center;">
 <iframe
- src = "assets/univariate_kills.html"
+ src = "assets/univariate_dpm.html"
  width = "800"
  height = "450"
- frameborder = "0"
+ frameborder = "0" 
 ></iframe>
+</div>
 Here, the distribution of dpm is more normal, but still skewed right. The closer appearance to normality does indicate that, while players tend to get less kills, their DPM is more evenly distributed across the board. This leads me to speculate: while players tend to get less kills in their matches, they still contribute evenly to engagements with enemy champions. 
 <br>
 <br>
