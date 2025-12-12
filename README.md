@@ -266,7 +266,7 @@ After producing 3000 test statistics of permutations, the observed tvd of 0.0 ha
  frameborder = "0" 
 ></iframe>
 
-Because the **p-value** of the observed statistic is > 0.05, we fail to reject the null hypothesis: that the distributions of `teamname` when `damageshare` is missing is the same as when `damageshare` is not missing. This is strong evidence to conclude that the missing values of `damageshare` are not dependent on the teamname column.
+Because the **p-value** of the observed statistic is > 0.05, we fail to reject the null hypothesis: that the distributions of `teamname` when `damageshare` is missing is the same as when `damageshare` is not missing. This is strong evidence to believe that the missing values of `damageshare` are not dependent on the teamname column.
 
 ---
  
