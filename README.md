@@ -18,9 +18,8 @@ This dataset captures essentially all of the numerical and recordable data that 
 For this analysis, the central question I am interested in is <b>Just how defined are the positions in League of Legends by stats?</b> To explore this question, I isolate many crucial statistics that define a player's performance as well as differentiate them from others. Exploring this question requires us to understand the patterns in individual stats and their correlations to others. In the conclusion of this analysis, I construct a predictive model that attempts to classify a player's position by just their match statistics. The performance of this Prediction Model may or may not support the idea that there actually are correlations between positions and statistics.
 <br>
 <br>
-<b>Introduction of Columns</b>
-<br>
-<br>
+ 
+### Introduction of Columns
 This dataset captures essentially every numerical and some categorical metrics of players and teams throughout 2025. Because 2025 has not yet concluded at the time of conducting this analysis, it should be recognized that this dataset is not entirely complete. At the time of this project, the dataset has 118932 rows of data. For this analysis, here are some of the rows that are important to defining an individual player’s performance. It should be recognized that while this is a large quantity of columns, later analyses in the project reduce the amount of columns used or focus on correlations between just two columns. Isolating this columns now highlights what I felt to be important statistics of individual players or were important to the data cleaning and analysis process, such as gameid and league which do not reflect a player’s performance.
 <br>
 <br>
@@ -79,13 +78,13 @@ This dataset captures essentially every numerical and some categorical metrics o
 <br>
 
 ## Data Cleaning and Exploratory Data Analysis
-Moving forward, I kept only a subset of the original Dataset by creating a dataframe with only the columns above. An additional step to clean this dataset for the focus of this analysis was to remove the rows in which the ‘position’ column was equal to team. Because my analysis focused on the relationship of individual players statistics to their position in each match, having a row that summarizes team specific qualities is unnecessary for this project. The removal of these rows was done with a mask, keeping only rows of the original dataset where ‘position’ was not equal to ‘team’
+Moving forward, I kept only a subset of the original Dataset by creating a dataframe with only the columns above. An additional step to clean this dataset for the focus of this analysis was to remove the rows in which the `position` column was equal to team. Because my analysis focused on the relationship of individual players statistics to their position in each match, having a row that summarizes team specific qualities is unnecessary for this project. The removal of these rows was done with a mask, keeping only rows of the original dataset where `position` was not equal to `team`
 <br>
 <br>
-Doing this reduced the size of the dataset from 118932 rows to 99110 rows, indicating that we now had a dataset of 99110 player statistics
+Doing this reduced the size of the dataset from **118932 rows** to **99110 rows**, indicating that we now had a dataset of **99110 player statistics**
 <br>
 <br>
-Some of these columns, such as ‘firstblood’ contained NaN values, but these discrepancies were kept and had unnoticeable impact on the analyses down the line. From here on, the dataframe here contains all of the information that will be used in the coming steps of the analysis. Some rows are added and removed per stage, such as the Hypothesis Test and Prediction Model. The added or transformed rows pertain specifically to the step at the time, and had no relationship to each other. 
+Some of these columns, such as `firstblood` contained **NaN** values, but these discrepancies were kept and had unnoticeable impact on the analyses down the line. From here on, the dataframe here contains all of the information that will be used in the coming steps of the analysis. Some rows are added and removed per stage, such as the Hypothesis Test and Prediction Model. The added or transformed rows pertain specifically to the step at the time, and had no relationship to each other. 
 <br>
 <br>
 Below is the head of the filtered dataframe.
@@ -102,7 +101,6 @@ Below is the head of the filtered dataframe.
 <br>
 
 ### Univariate Analysis
-<br>
 I performed univariate analysis first on individual player’s `kills` in each match by plotting a histogram.
 <br>
 
@@ -131,8 +129,7 @@ Here, the distribution of dpm is more normal, but still skewed right. The closer
 <br>
 
 ### Bivariate Analysis
-<br>
-I used a bivariate analysis scatterplot to visualize the relationship between `kills` and ‘damage per minute.’ By knowing that DPM is a metric about only damage to enemy champions, we can suspect there is a positive correlation
+I used a bivariate analysis scatterplot to visualize the relationship between `kills` and `damage per minute`. By knowing that DPM is a metric about only damage to enemy champions, we can suspect there is a positive correlation
 <br>
 
 <iframe
@@ -145,7 +142,7 @@ I used a bivariate analysis scatterplot to visualize the relationship between `k
 As expected, this graph demonstrates a rather strong correlation between these two statistics - that players with a high amount of kills had a high damage per minute. Some players who had high kills had low DPM, which in context might mean they made a lot of the final hits on enemies or committed only to fights they could win - these are just some of many possible reasons a player can get a lower DPM but high amount of kills
 <br>
 <br>
-I performed bivariate analysis on the amount of player `kills` and monster kills using a scatter plot.
+I performed bivariate analysis on the amount of player `kills` and `monster kills` using a scatter plot.
 <br>
 
 <iframe
@@ -155,12 +152,11 @@ I performed bivariate analysis on the amount of player `kills` and monster kills
  frameborder = "0" 
 ></iframe>
 
-From this graph, I found it interesting there existed two almost separate clusters of points. As seen above, a large cluster of points have less than 50 monster kills while having some of the most player kills, meanwhile many had monster kills above 100 but much less player kills than the prior cluster. This could indicate that monster kills and player kills are distinctive stats depending on the player, and perhaps role is an underlying reason why these clusters might exist.
+From this graph, I found it interesting there existed two almost separate clusters of points. As seen above, a large cluster of points have less than 50 monster kills while having some of the most player kills, meanwhile many had monster kills above 100 but much less player kills than the prior cluster. This could indicate that `monster kills` and `player kills` are distinctive stats depending on the player, and perhaps role is an underlying reason why these clusters might exist.
 <br>
 <br>
 
 ### Aggregate Statistics
-<br>
 A common way to observe the statistics of players is by aggregating every player’s stats when they played a specific position. Below is a table representing the aggregation of stats based on what position the player played.
 
 | position   |   kills |   deaths |   assists |   firstblood |   firstbloodkill |         dpm |   damagetotowers |   totalgold |      minionkills |     monsterkills |   damagetochampions |
@@ -173,7 +169,7 @@ A common way to observe the statistics of players is by aggregating every player
 
 <br>
 <br>
-By taking the sum of all stats across every position using a groupby() followed by a sum aggregation function, we can see some significant differences in the overall stats of each position. One for example, is that the ‘support’ position has a significantly lower amount of kills compared to every other position, but a significantly higher amount of `assists`. Support also has a staggeringly low amount of monster `kills`, less than 6000 when the jungle position has nearly 3.6 million!
+By taking the **sum** of all stats across every position using a groupby() followed by a sum aggregation function, we can see some significant differences in the overall stats of each position. One for example, is that the `support` position has a significantly lower amount of kills compared to every other position, but a significantly higher amount of `assists`. Support also has a staggeringly low amount of monster `kills`, less than 6000 when the jungle position has nearly 3.6 million!
 <br>
 <br>
 The many observations to be made from this table make it likely evidence that positions do have a significantly different playstyles, and thus stats, from each other.
@@ -183,14 +179,11 @@ The many observations to be made from this table make it likely evidence that po
 
 ## Assessment of Missingness
 ### NMAR Analysis
-<br>
-
 The most likely NMAR columns in the original dataset are the ban1, ban2, ban3, ban4, and ban5. A ban is a team's decision to "ban", or prevent a specific champion from being played that game, and is a strategic decision that changes the dynamic of team compositions. In the dataset, it seems very random whenever missing values appear in any of these 5 ban columns. Bans are not tied to any other specific column, because they are an independent decision made by the whole team. There seem to be no other columns that could describe why a whole team decides *not* to ban a character in each ban phase. Contextually, this missingness can reflect the decision to *not* ban a character, which is just as strategic as it is *to* ban a character. This missingness could reflect the team's decision to play risky or unusual - to provoke their competitors, create unpredictability, or mix up their approach to changing the dynamic of the game. Banning a champion reduces the possibilities of team compositions - the possible pairings of champions that could appear. NOT banning a champion retains a greater amount of possible pairings, which could add pressure to the decision making process of which champions to use. Because it seems these columns are not affected by any others, as well as how independent ban decisions are in the context of professional games, I believe these columns’ missingness is NMAR, and dependent solely on the columns themselves.
 <br>
 <br>
 
 ### Missingness Dependency
-<br>
 While the missing values of a column can be explained entirely by the column themselves - the definition of “Not Missing At Random” - the missingness of a column(s) can also be explained by other columns. To demonstrate this, I explored the missingness of the ‘damageshare’ column. The two other columns we will compare to ‘damageshare’ are ‘position’ and ‘teamname.’ From the way this dataset was designed, it is not explicitly stated that ‘damageshare’ values only accompany in-game ‘positions,’ but it is evident that the missingness of ‘damageshare’ can be explained by the values in ‘position’
 <br>
 <br>
@@ -348,7 +341,7 @@ The p-value of this hypothesis test heavily depended on the number of test stati
 Given datasets this extensive, we can construct a prediction problem to train a machine learning model to attempt to answer. Using predictive models in these instances can provide us further evidence patterns exist.
 <br>
 <br>
-For this analysis, my prediction problem is: "What role is a player based on their post game statistics?" This is a multiclass classification situation which will predict ‘position’ as its response variable. I chose this prediction problem because I am interested in determining whether or not LOL post game statistics, at least what statistics are provided, are deterministic enough of a player’s position. In other words, how defined are the playstyles of each position just by each player’s statistics? For this prediction problem I choose accuracy as the main metric of evaluation, because each position appears an almost equal amount in the dataset once I removed rows for ‘team’ positions (as I am looking solely at player positions). Nevertheless, I will also provide F1-scores to highlight individual performances of the prediction model on each class.
+For this analysis, my prediction problem is: "What role is a player based on their post game statistics?" This is a multiclass classification situation which will predict `position` as its response variable. I chose this prediction problem because I am interested in determining whether or not LOL post game statistics, at least what statistics are provided, are deterministic enough of a player’s position. In other words, how defined are the playstyles of each position just by each player’s statistics? For this prediction problem I choose accuracy as the main metric of evaluation, because each position appears an almost equal amount in the dataset once I removed rows for `team` positions (as I am looking solely at player positions). Nevertheless, I will also provide F1-scores to highlight individual performances of the prediction model on each class.
 <br>
 <br>
 When constructing prediction models on datasets like this, it is important to address the time in which you would be making predictions, also known as the “time of prediction.” When predicting some things, there are columns of data you should not use to predict off of because those statistics would only be available after your “time of prediction.” For this circumstance, because my prediction problem happens explicitly after each match and looks backwards after all of the data is obtained, my “time of prediction” is technically after all of this information is already collected. In other words, there are no columns in the dataset that can come after I make my prediction, because I am basing my prediction completely on data that has already been documented. 
