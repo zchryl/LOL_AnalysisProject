@@ -92,6 +92,13 @@ Some of these columns, such as ‘firstblood’ contained NaN values, but these 
 <br>
 Below is the head of the filtered dataframe.
 <br>
+<iframe
+ src = "assets/univariate_kills.html"
+ width = "800"
+ height = "600"
+ frameborder = "0"
+ ></iframe>
+<br>
 <br>
 Univariate Analysis
 <br>
