@@ -313,7 +313,15 @@ For my baseline model, I decided to use a DecisionTreeClassifier on the followin
 <br>
 <br>
 Below is the filtered DataFrame of just the feature columns that I used for prediction. The position column was saved as a separate series as it was the target column to predict.
-<br>
+
+|    |   kills |   deaths |   assists |   teamkills |   firstblood |   firstbloodkill |     dpm |   damagetotowers |   totalgold |   minionkills |   monsterkills |   damagetochampions |
+|---:|--------:|---------:|----------:|------------:|-------------:|-----------------:|--------:|-----------------:|------------:|--------------:|---------------:|--------------------:|
+|  0 |       1 |        2 |         1 |           3 |            0 |                0 | 759.648 |             7451 |       10668 |           234 |              0 |               20156 |
+|  1 |       0 |        3 |         1 |           3 |            0 |                0 | 187.048 |                0 |        7429 |            11 |            132 |                4963 |
+|  2 |       1 |        2 |         0 |           3 |            0 |                0 | 525.829 |                0 |        9032 |           209 |              0 |               13952 |
+|  3 |       1 |        3 |         1 |           3 |            0 |                0 | 259.975 |              333 |        9407 |           239 |             12 |                6898 |
+|  4 |       0 |        3 |         2 |           3 |            0 |                0 | 157.312 |                0 |        5719 |            38 |              0 |                4174 |
+
 <br>
 
 At this stage of the modeling process, it is important to identify the quantitative and qualitative features. For this specific subset of columns, all but one feature are quantitative. firstbloodkill is a nominal categorical feature, but the dataset already converted this feature with one-hot encoding, making its values either 1 or 0. Therefore, no further encoding on this column is necessary. All quantitative features have an inherent ordinal nature to them, because each numerical value’s size is correlated to greater importance. For example, 15 in the kills column has more importance or ranking than a value of 5. Likewise, 15 deaths is numerically greater than 5 deaths.
