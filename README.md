@@ -190,13 +190,11 @@ After producing 3000 test statistics of permutations, the observed tvd of 0.0 ha
 <br>
 <br>
 Because the p-value of the observed statistic is > 0.05, we fail to reject the null hypothesis: that the distributions of ‘teamname’ when ‘damageshare’ is missing is the same as when ‘damageshare’ is not missing. This is strong evidence to conclude that the missing values of ‘damageshare’ are not dependent on the teamname column.
-<br>
-<br>
+
 ---
  
 ## Hypothesis Testing
-<br>
-<br>
+
 An important part of analyzing datasets for patterns is the ability to conduct hypothesis tests to validate claims about the data. For this section of the analysis, I will conduct a Hypothesis Test on an aggregate statistic - kill death assist ratio (KDA). KDA is a metric calculated by looking at a player’s specific (kills + assists) / deaths in a match. KDA is an important metric because it represents an individual player’s involvement in PVP combat in a specific match. This is especially important because League is a team based game where one’s combat performance against the other team’s players is a critical aspect to ensuring victory. 
 <br>
 <br>
@@ -235,14 +233,12 @@ Looking at just this subsample of either Mid or Bot positions carrying, under th
 <br>
 <br>
 The p-value of this hypothesis test heavily depended on the number of test statistics calculated, so leaning on the more extreme amount would better represent the true distribution under the null. From these findings, I am inclined to believe that both Bot and Mid positions carry their teams by KDA - the same proportion of times. We can only be inclined to believe, and cannot absolutely conclude this.  
-<br>
-<br>
+
 ---
 
 
 ## Framing a Prediction Problem
-<br>
-<br>
+
 Given datasets this extensive, we can construct a prediction problem to train a machine learning model to attempt to answer. Using predictive models in these instances can provide us further evidence patterns exist.
 <br>
 <br>
@@ -250,11 +246,11 @@ For this analysis, my prediction problem is: "What role is a player based on the
 <br>
 <br>
 When constructing prediction models on datasets like this, it is important to address the time in which you would be making predictions, also known as the “time of prediction.” When predicting some things, there are columns of data you should not use to predict off of because those statistics would only be available after your “time of prediction.” For this circumstance, because my prediction problem happens explicitly after each match and looks backwards after all of the data is obtained, my “time of prediction” is technically after all of this information is already collected. In other words, there are no columns in the dataset that can come after I make my prediction, because I am basing my prediction completely on data that has already been documented. 
-<br>
-<br>
+
 --- 
 
 ## Baseline Model 
+
 For my baseline model, I decided to use a DecisionTreeClassifier on the following features: kills, deaths, assists, teamkills, firstblood, firstbloodkill, dpm, damagetowers, totalgold, minionkills, monsterkills, and damagetochampions. 
 <br>
 <br>
@@ -272,8 +268,7 @@ After fitting this pipeline to the training data, it returns an accuracy score o
 <br>
 <br>
 From these initial scores, it is possible to say the model is “passable.” It accurately predicts greater than 50% of the time, but the F1-scores tell us the model struggles most differentiating the ‘bot’, ‘mid’, and ‘top’ positions. Meanwhile, it has maximum F1-score for ‘jng’ and ‘sup.’ What stands out the most from this current model is that the training accuracy is 68.474%, when Decision Trees often overfit. In tandem with a low test accuracy, I am led to believe that this baseline model is actually underfitting the data. Therefore, there is some room for improvement
-<br>
-<br>
+
 ---
 
 ## Final Model
@@ -290,8 +285,7 @@ Evaluating this model now, it yielded an accuracy of 100% (1.0) on the training 
 <br>
 <br>
 Something I recognized about this model is that the ‘best’ chosen n_estimators hyperparameter was the largest value I allowed it to be. 100 to 200 with increments of 30 has a max value of 190, which is what the Grid Search concluded as the best parameter. What this means, given the still low F1-Scores, is that the model could likely improve by increasing the number of estimators - even more. On the other hand, the depth of each estimator was much less than the provided maximum it could have been, so this is a good sign that 160 is the sweet spot for this dataset. 
-<br>
-<br>
+
 ---
 
 ## Fairness Analysis
@@ -314,5 +308,3 @@ Test Statistic: difference in accuracy between players who have less than or equ
 <br>
 <br>
 From the permutation test, the observed value has a p-value of 0.265, which is much greater than the significance level of 0.05. Thus, I fail to reject the null hypothesis and am inclined to believe that this model does not perform more accurately for players with greater than 10 kills. Maybe kills are not as important of a metric after all! Failing to reject the null in this test is a good sign because that indicates the model is fair regarding groups derived from the kills feature. Further tests can be conducted to identify if this model is fair in the other feature categories.
-<br>
-<br>
