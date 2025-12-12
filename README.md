@@ -421,6 +421,12 @@ Alternative Hypothesis: The accuracy of the model for player positions when that
 <br>
 <br>
 Test Statistic: difference in accuracy between players who have less than or equal to 10 kills and players who have over 10 kills
-<br>
-<br>
+
+<iframe
+ src = "assets/fairness.html"
+ width = "800"
+ height = "450"
+ frameborder = "0" 
+></iframe>
+
 From the permutation test, the observed value has a p-value of 0.265, which is much greater than the significance level of 0.05. Thus, I fail to reject the null hypothesis and am inclined to believe that this model does not perform more accurately for players with greater than 10 kills. Maybe kills are not as important of a metric after all! Failing to reject the null in this test is a good sign because that indicates the model is fair regarding groups derived from the kills feature. Further tests can be conducted to identify if this model is fair in the other feature categories.
