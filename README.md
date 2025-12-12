@@ -93,7 +93,7 @@ Some of these columns, such as ‘firstblood’ contained NaN values, but these 
 Below is the head of the filtered dataframe.
 <br>
 <br>
-| gameid           | league   | side   | position   |   kills |   deaths |   assists |   teamkills |   damageshare |   damagetotowers |   totalgold |   minionkills |   monsterkills |   damagetochampions |     dpm |   firstblood |   firstbloodkill |
+| gameid           | league   | side   | position   |   kills |   deaths |   assists |   teamkills |   damageshare |   damagetotowers |   totalgold |   minionkills |   monsterkills | damagetochampions |     dpm |   firstblood |   firstbloodkill |
 |:-----------------|:---------|:-------|:-----------|--------:|---------:|----------:|------------:|--------------:|-----------------:|------------:|--------------:|---------------:|--------------------:|--------:|-------------:|-----------------:|
 | LOLTMNT03_179647 | LFL2     | Blue   | top        |       1 |        2 |         1 |           3 |     0.40197   |             7451 |       10668 |           234 |              0 |               20156 | 759.648 |            0 |                0 |
 | LOLTMNT03_179647 | LFL2     | Blue   | jng        |       0 |        3 |         1 |           3 |     0.0989769 |                0 |        7429 |            11 |            132 |                4963 | 187.048 |            0 |                0 |
