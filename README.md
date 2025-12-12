@@ -93,6 +93,15 @@ Some of these columns, such as ‘firstblood’ contained NaN values, but these 
 Below is the head of the filtered dataframe.
 <br>
 <br>
+| gameid           | league   | side   | position   |   kills |   deaths |   assists |   teamkills |   damageshare |   damagetotowers |   totalgold |   minionkills |   monsterkills |   damagetochampions |     dpm |   firstblood |   firstbloodkill |
+|:-----------------|:---------|:-------|:-----------|--------:|---------:|----------:|------------:|--------------:|-----------------:|------------:|--------------:|---------------:|--------------------:|--------:|-------------:|-----------------:|
+| LOLTMNT03_179647 | LFL2     | Blue   | top        |       1 |        2 |         1 |           3 |     0.40197   |             7451 |       10668 |           234 |              0 |               20156 | 759.648 |            0 |                0 |
+| LOLTMNT03_179647 | LFL2     | Blue   | jng        |       0 |        3 |         1 |           3 |     0.0989769 |                0 |        7429 |            11 |            132 |                4963 | 187.048 |            0 |                0 |
+| LOLTMNT03_179647 | LFL2     | Blue   | mid        |       1 |        2 |         0 |           3 |     0.278244  |                0 |        9032 |           209 |              0 |               13952 | 525.829 |            0 |                0 |
+| LOLTMNT03_179647 | LFL2     | Blue   | bot        |       1 |        3 |         1 |           3 |     0.137567  |              333 |        9407 |           239 |             12 |                6898 | 259.975 |            0 |                0 |
+| LOLTMNT03_179647 | LFL2     | Blue   | sup        |       0 |        3 |         2 |           3 |     0.0832419 |                0 |        5719 |            38 |              0 |                4174 | 157.312 |            0 |                0 |
+<br>
+<br>
 Univariate Analysis
 <br>
 <br>
