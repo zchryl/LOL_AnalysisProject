@@ -202,13 +202,13 @@ For both of these tests, I chose to conduct a permutation test with a significan
 For the first comparison, we look at the columns of ‘position’ and ‘damageshare’
 <br>
 <br>
-Null Hypothesis: The distribution of position when damageshare is missing is the same as the distribution of position when damageshare is not missing
+**Null Hypothesis:** The distribution of position when damageshare is missing is the same as the distribution of position when damageshare is not missing
 <br>
 <br>
-Alternative Hypothesis: the distribution of position when damageshare is missing is NOT the same as the distribution of position when damageshare is not missing
+**Alternative Hypothesis:** the distribution of position when damageshare is missing is NOT the same as the distribution of position when damageshare is not missing
 <br>
 <br>
-Test Statistic: TVD between distribution of position when damageshare is missing and not missing
+**Test Statistic:** TVD between distribution of position when damageshare is missing and not missing
 <br>
 <br>
 Below is the observed distribution of position when cells in ‘damageshare’ are and are not missing
@@ -239,13 +239,13 @@ because the p-value is less than the 0.05 significance level, I reject the null 
 The second permutation test I performed is on the ‘damageshare’ and ‘teamname’ column. From this test, it will be revealed that the missingness in ‘damageshare’ is not dependent on the ‘teamname’ column.
  <br>
 <br>
-Null Hypothesis: The distribution of ‘teamname’ when ‘damageshare’ is missing is the same as the distribution of ‘teamname’ when ‘damageshare’ is not missing
+**Null Hypothesis:** The distribution of ‘teamname’ when ‘damageshare’ is missing is the same as the distribution of ‘teamname’ when ‘damageshare’ is not missing
 <br>
 <br>
-Alternative Hypothesis: The distribution of ‘teamname’ when ‘damageshare’ is missing is NOT the same as the distribution of ‘teamname’ when ‘damageshare’ is not missing
+**Alternative Hypothesis:** The distribution of ‘teamname’ when ‘damageshare’ is missing is NOT the same as the distribution of ‘teamname’ when ‘damageshare’ is not missing
 <br>
 <br>
-Test Statistic: TVD between distribution of teamname when damageshare is missing and not missing
+**Test Statistic:** TVD between distribution of teamname when damageshare is missing and not missing
 <br>
 <br>
 Below are the two distributions of values in ‘teamname’ when ‘damageshare’ is missing. To reduce clutter, only the first 10 team names are shown. 
@@ -310,13 +310,15 @@ Here I must preface that KDA is not an overall metric of performance in League. 
 For my Hypothesis test, my test statistic was the signed difference in proportion (Mid - Bot) with a significance level of 0.05. These are the two hypotheses that I used:
 <br>
 <br>
-Null Hypothesis: The proportion of times that "Bot" position has the highest KDA on their team per game is equal to the proportion of times that "Mid" position has the highest KDA on their team, regardless of winning or losing
+**Null Hypothesis:** The proportion of times that "Bot" position has the highest KDA on their team per game is equal to the proportion of times that "Mid" position has the highest KDA on their team, regardless of winning or losing
 <br>
 <br>
-Alternative Hypothesis: ADC positions more often have the highest KDAs than do Mid Laners on their teams.
+**Alternative Hypothesis:** ADC positions more often have the highest KDAs than do Mid Laners on their teams.
 <br>
 <br>
-Test Statistic: Different in Proportion 
+**Test Statistic:** Different in Proportion 
+<br>
+<br>
 Below is the plot for the empirical distribution of test statistics:
 
 <iframe
@@ -372,13 +374,13 @@ Below is the filtered DataFrame of just the feature columns that I used for pred
 
 <br>
 
-At this stage of the modeling process, it is important to identify the quantitative and qualitative features. For this specific subset of columns, all but one feature are quantitative. firstbloodkill is a nominal categorical feature, but the dataset already converted this feature with one-hot encoding, making its values either 1 or 0. Therefore, no further encoding on this column is necessary. All quantitative features have an inherent ordinal nature to them, because each numerical value’s size is correlated to greater importance. For example, 15 in the `kills` column has more importance or ranking than a value of 5. Likewise, 15 deaths is numerically greater than 5 deaths.
+At this stage of the modeling process, it is important to identify the quantitative and qualitative features. For this specific subset of columns, all but one feature are quantitative. firstbloodkill is a nominal categorical feature, but the dataset already converted this feature with `one-hot encoding`, making its values either 1 or 0. Therefore, no further encoding on this column is necessary. All quantitative features have an inherent ordinal nature to them, because each numerical value’s size is correlated to greater importance. For example, 15 in the `kills` column has more importance or ranking than a value of 5. Likewise, 15 deaths is numerically greater than 5 deaths.
 <br>
 <br>
-For this baseline model, I applied a StandardScaler on the `kills`, `assists`, and `deaths` column because each of these statistics range in values depending on other columns (that are not part of these hand-picked features), such as match length. Longer matches naturally allow more time for these particular columns to accumulate larger values, so standardizing felt necessary in order to normalize the scale of these features. 
+For this baseline model, I applied a `StandardScaler` on the `kills`, `assists`, and `deaths` column because each of these statistics range in values depending on other columns (that are not part of these hand-picked features), such as match length. Longer matches naturally allow more time for these particular columns to accumulate larger values, so standardizing felt necessary in order to normalize the scale of these features. 
 <br>
 <br>
-After fitting this pipeline to the training data, it returns an accuracy score of 68.474% on the training data and 68.456% on the test data. This small dip in accuracy is always expected because the model does not train on the test data. To further analyze this baseline model, I examined the F1-Score of each individual class because of this problem’s multiclass nature. When comparing the predictions of the test data with the actual test classes. When checking the F1-Scores of the baseline model, in the order of `bot`, `jng`, `mid`, `sup`, `top`, the scores are 0.52, 1.0, 0.43, 1.0, 0.47.
+After fitting this pipeline to the training data, it returns an accuracy score of **68.474%** on the training data and **68.456%** on the test data. This small dip in accuracy is always expected because the model does not train on the test data. To further analyze this baseline model, I examined the F1-Score of each individual class because of this problem’s multiclass nature. When comparing the predictions of the test data with the actual test classes. When checking the F1-Scores of the baseline model, in the order of `bot`, `jng`, `mid`, `sup`, `top`, the scores are `0.52, 1.0, 0.43, 1.0, 0.47`.
 <br>
 <br>
 From these initial scores, it is possible to say the model is “passable.” It accurately predicts greater than 50% of the time, but the F1-scores tell us the model struggles most differentiating the `bot`, `mid`, and `top` positions. Meanwhile, it has maximum F1-score for `jng` and `sup`. What stands out the most from this current model is that the training accuracy is 68.474%, when Decision Trees often overfit. In tandem with a low test accuracy, I am led to believe that this baseline model is actually underfitting the data. Therefore, there is some room for improvement
@@ -386,16 +388,16 @@ From these initial scores, it is possible to say the model is “passable.” It
 ---
 
 ## Final Model
-To attempt to improve the accuracy of the model, I next encoded the `minionkills` and `monsterkills` feature with a StandardScaler on top of the original `kills`, `deaths`, and `assists`, features. I did this because, just like `kills`, `deaths`, and `assists`, the values of `minionkills` and `monsterskills` may vary depending on factors like the length of the game. Standardizing these features would likely place them on an easier scale for readability. Additionally, I also encoded damagetochampions and damagetotowers with a QuantileTransformer, because these features ranged in the thousands between player to player. Instead of having these large differences, encoding each value to instead be on a Distribution’s CDF, much like standardizing, would change their units to be much smaller and instead now relative to each other. 
+To attempt to improve the accuracy of the model, I next encoded the `minionkills` and `monsterkills` feature with a `StandardScaler` on top of the original `kills`, `deaths`, and `assists`, features. I did this because, just like `kills`, `deaths`, and `assists`, the values of `minionkills` and `monsterskills` may vary depending on factors like the length of the game. Standardizing these features would likely place them on an easier scale for readability. Additionally, I also encoded `damagetochampions` and `damagetotowers` with a `QuantileTransformer`, because these features ranged in the thousands between player to player. Instead of having these large differences, encoding each value to instead be on a Distribution’s CDF, much like standardizing, would change their units to be much smaller and instead now relative to each other. 
 <br>
 <br>
-Using a QuantileTransformer would remove a great deal of the variability in the two damage columns with a non-linear transformation. These features would now be placed on a much more relative scale between its values, whereas before they would be vastly different.
+Using a `QuantileTransformer` would remove a great deal of the variability in the two damage columns with a non-linear transformation. These features would now be placed on a much more relative scale between its values, whereas before they would be vastly different.
 <br>
 <br>
-For this improved model, I chose to train a RandomForestClassifier, searching for the best hyperparameters with GridSearchCV.  Using a Grid Search, I trained models with a max_depth from 0 to 200 at increments of 10 as well as n_estimators from 100 to 200 at increments of 30. From this search, the best parameters identified were max_depth = 160 and n_estimators = 190. In other words, 190 decision trees with a depth of 160 each - was found to be the best parameters.
+For this improved model, I chose to train a **RandomForestClassifier**, searching for the best hyperparameters with **GridSearchCV**.  Using a Grid Search, I trained models with a max_depth from 0 to 200 at increments of 10 as well as n_estimators from 100 to 200 at increments of 30. From this search, the best parameters identified were `max_depth = 160` and `n_estimators = 190.` In other words, 190 decision trees with a depth of 160 each - was found to be the best parameters.
 <br>
 <br>
-Evaluating this model now, it yielded an accuracy of 100% (1.0) on the training data, and an accuracy of 74.206% (0.742069) on the test data. Looking at the individual F1-Scores, the model now scored 0.6, 1.0, 0.47, 1.0, 0.63. Thus, this new model had about a 6% increase in accuracy over the baseline on the test data. The 100% accuracy on the training data is a positive sign as well, because we expect having that many decision trees in a Random Forest to overfit the data. The F1-scores for `bot`, `mid`, and `top` positions also improved, which is a positive sign, although still rather low. 
+Evaluating this model now, it yielded an accuracy of **100%** (1.0) on the training data, and an accuracy of **74.206%** (0.742069) on the test data. Looking at the individual F1-Scores, the model now scored `0.6, 1.0, 0.47, 1.0, 0.63`. Thus, this new model had about a **6%** increase in accuracy over the baseline on the test data. The 100% accuracy on the training data is a positive sign as well, because we expect having that many decision trees in a Random Forest to overfit the data. The F1-scores for `bot`, `mid`, and `top` positions also improved, which is a positive sign, although still rather low. 
 <br>
 <br>
 Something I recognized about this model is that the ‘best’ chosen n_estimators hyperparameter was the largest value I allowed it to be. 100 to 200 with increments of 30 has a max value of 190, which is what the Grid Search concluded as the best parameter. What this means, given the still low F1-Scores, is that the model could likely improve by increasing the number of estimators - even more. On the other hand, the depth of each estimator was much less than the provided maximum it could have been, so this is a good sign that 160 is the sweet spot for this dataset. 
