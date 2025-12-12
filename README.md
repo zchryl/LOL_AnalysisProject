@@ -224,7 +224,7 @@ After calculating the TVD between these two distributions, we get an observed TV
  frameborder = "0" 
 ></iframe>
 
-Because the **p-value** is less than the 0.05 significance level, I reject the null hypothesis and favor the alternative. In other words, because the distribution of position when damageshare IS missing IS different from the distribution of position when damageshare IS NOT missing, the missingness in the `damageshare` column depends on the `position’\` column. 
+Because the **p-value** is less than the 0.05 significance level, I reject the null hypothesis and favor the alternative. In other words, because the distribution of position when damageshare IS missing IS different from the distribution of position when damageshare IS NOT missing, the missingness in the `damageshare` column depends on the `position` column. 
 <br>
 <br>
 The second permutation test I performed is on the `damageshare` and `teamname` column. From this test, it will be revealed that the missingness in `damageshare` is not dependent on the `teamname` column.
