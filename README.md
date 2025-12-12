@@ -317,11 +317,14 @@ Alternative Hypothesis: ADC positions more often have the highest KDAs than do M
 <br>
 Test Statistic: Different in Proportion 
 Below is the plot for the empirical distribution of test statistics:
-<br>
-<br>
 
-<br>
-<br>
+<iframe
+ src = "assets/hyp_kda_carry.html"
+ width = "800"
+ height = "450"
+ frameborder = "0" 
+></iframe>
+
 With my observed value having a p-value of 0.0514, which is < 0.05, fail to reject the Null Hypothesis 
 <br>
 <br>
