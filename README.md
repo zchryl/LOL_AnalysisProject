@@ -108,7 +108,6 @@ Univariate Analysis
 I performed univariate analysis first on individual player’s ‘kills’ in each match by plotting a histogram.
 <br>
 
-
 <iframe
  src = "assets/univariate_kills.html"
  width = "800"
@@ -116,13 +115,11 @@ I performed univariate analysis first on individual player’s ‘kills’ in ea
  frameborder = "0"
 ></iframe>
 
-
 The graph is unimodal but exhibits a heavy right skew, a possible indication that kills are not evenly spread out across players. With a high frequency for low amounts of kills may indicate that there is likely an underlying reason why kills tend to be low, but not much more can be said with this observation alone.
 <br>
 <br>
 Next, I performed a similar univariate analysis on Player’s DPM across all games by plotting the observed values on a histogram. 
 <br>
-
 
 <iframe
  src = "assets/univariate_dpm.html"
@@ -140,14 +137,12 @@ Bivariate Analysis
 I used a bivariate analysis scatterplot to visualize the relationship between ‘kills’ and ‘damage per minute.’ By knowing that DPM is a metric about only damage to enemy champions, we can suspect there is a positive correlation
 <br>
 
-<div style = text-align:center;">
 <iframe
- src = "assets/univariate_dpm.html"
+ src = "assets/bi_kills_dpm.html"
  width = "800"
  height = "450"
  frameborder = "0" 
 ></iframe>
-</div>
 
 As expected, this graph demonstrates a rather strong correlation between these two statistics - that players with a high amount of kills had a high damage per minute. Some players who had high kills had low DPM, which in context might mean they made a lot of the final hits on enemies or committed only to fights they could win - these are just some of many possible reasons a player can get a lower DPM but high amount of kills
 <br>
@@ -156,7 +151,7 @@ I performed bivariate analysis on the amount of player kills and monster kills u
 <br>
 
 <iframe
- src = "assets/univariate_dpm.html"
+ src = "assets/bi_kills_monster.html"
  width = "800"
  height = "450"
  frameborder = "0" 
@@ -231,12 +226,11 @@ After calculating the TVD between these two distributions, we get an observed TV
 <br>
 
 <iframe
- src = "assets/univariate_dpm.html"
+ src = "assets/dmg_perm.html"
  width = "800"
  height = "450"
  frameborder = "0" 
 ></iframe>
-
 
 because the p-value is less than the 0.05 significance level, I reject the null hypothesis and favor the alternative. In other words, because the distribution of position when damageshare IS missing IS different from the distribution of position when damageshare IS NOT missing, the missingness in the ‘damageshare’ column depends on the ‘position’ column. 
 <br>
@@ -274,7 +268,7 @@ After producing 3000 test statistics of permutations, the observed tvd of 0.0 ha
 <br>
 
 <iframe
- src = "assets/univariate_dpm.html"
+ src = "assets/teamname_perm.html"
  width = "800"
  height = "450"
  frameborder = "0" 
